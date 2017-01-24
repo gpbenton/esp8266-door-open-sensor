@@ -7,23 +7,25 @@ If the link stops working, here is the diagram
 
 <pre>
 -----------------------------------
-     |VCC  |RST                 |
-   --------------                /  
-   |             |              /   Switch, Normally Open
-   |             | CH_PD        |
-   |             |---------------
-   |             |              |
-   |             |GPIO0         |
-   |             |---/\/\/\/\----
-   |             |     1KOhm    |
-   |             |              /
-   |             |              \ 10KOhm
-   |             |              /
-   |             |              \
-   |             |              |
-   --------------               |
-       | GND                    |
----------------------------------
+     |VCC  |RST                   |
+   --------------                 \    SPDT Reed
+   |             |                 \   Switch
+   |             | CH_PD        |   |---------o
+   |             |--------------o             |
+   |             |              |             |
+   |             |GPIO0         |             |
+   |             |---/\/\/\/\---o             |
+   |             |     1KOhm    |             |
+   |             |              /             |
+   |             |              \ 10KOhm      |
+   |             |              /             |
+   |             |              \             |
+   |             |-------------=|=------------o
+   |             |GPIO2         |             |
+   |             |              |             \
+   --------------               |             / 10KOhm
+       | GND                    |             |
+--------------------------------o-------------o-
 </pre>
 
 The idea is that the esp8266 is powered off by CH_PD dragged low until the switch is closed.
