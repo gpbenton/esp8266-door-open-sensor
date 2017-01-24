@@ -30,3 +30,13 @@ The idea is that the esp8266 is powered off by CH_PD dragged low until the switc
 
 On power up, GPIO0 is taken high to keep CH_PD high until processing is finished.
 
+## Software
+I had wanted to try out Platformio development environment, and this seemed a perfect opportunity.
+
+All my sensors use MQTT, so I can easily swap between different controlling software so I have included esp_mqtt from @tuanpmt as a submodule, and the platformio.init is configured to use this.  
+
+The only change I have had to make to the esp_mqtt is to specify the include directory for queue.h in queue.c as this was conflicting with queue.h in the development environment, and I couldn't find a way of changing the Include path search order.
+<pre>
+#include <include/queue.h>
+</pre>
+
