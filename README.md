@@ -37,6 +37,6 @@ All my sensors use MQTT, so I can easily swap between different controlling soft
 
 The only change I have had to make to the esp_mqtt is to specify the include directory for queue.h in queue.c as this was conflicting with queue.h in the development environment, and I couldn't find a way of changing the Include path search order.
 <pre>
-#include <include/queue.h>
+#include "include/queue.h"
 </pre>
 
